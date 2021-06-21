@@ -1,0 +1,34 @@
+Classes
+    Teams - has_one: roster
+        - "Key": LAD (example) - string
+        - "City": "Los Angeles" - string
+        - "Name": "Dodgers" - string
+        - "League": "NL" - string
+        - "Division": "West" - string
+        - "Logo": (wikipedia URL) - string
+    
+    Roster - belongs_to: a team
+        - team_id: integer
+        - "FirstName": string 
+        - "LastName": string 
+        - "Position": string 
+        - "Status": should equal "Active" as the other option is "Minors" string 
+
+    Standings 
+        - "City": string
+        - "Name": string 
+        - "League": string 
+        - "Division": string
+        - "Wins": integer 
+        - "Losses": integer 
+
+    News 
+        - "Title": string 
+        - "Content": text 
+
+    Scores
+        - "Day": "2021-06-21T00:00:00" dateTime 
+        - "AwayTeam": string 
+        - "HomeTeam": string 
+        - "AwayTeamRuns": integer 
+        - "HomeTeamRuns": integer 
