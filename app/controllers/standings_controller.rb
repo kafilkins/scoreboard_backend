@@ -1,2 +1,0 @@
-class StandingsController < ApplicationController
-end
