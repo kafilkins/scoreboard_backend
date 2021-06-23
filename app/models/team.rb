@@ -1,3 +1,5 @@
 class Team < ApplicationRecord
-    has_one :roster 
+   # has_many :rosters 
+
+    validates :key, uniqueness: true
 end

@@ -5,7 +5,7 @@ class CreateRosters < ActiveRecord::Migration[6.1]
       t.string :lastname
       t.string :position
       t.string :status
-      t.integer :team_id
+      t.string :team
 
       t.timestamps
     end

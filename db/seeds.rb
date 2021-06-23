@@ -6,9 +6,11 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-TEAM_URL = 'https://sportsdata.io/developers/api-documentation/mlb#/base/teams-active'
+ENV["KEY"]
 
-ROSTER_URL = 'https://sportsdata.io/developers/api-documentation/mlb#/base/players-by-team'
+TEAM_URL = "https://fly.sportsdata.io/v3/mlb/scores/json/teams?key=#{ENV["KEY"]}"
+
+ROSTER_URL = "https://fly.sportsdata.io/v3/mlb/scores/json/Players?key=#{ENV["KEY"]}"
 
 STANDINGS_URL = 'https://sportsdata.io/developers/api-documentation/mlb#/base/standings'
 
@@ -16,10 +18,27 @@ SCORES_URL = 'https://sportsdata.io/developers/api-documentation/mlb#/scores/gam
 
 NEWS_URL = 'https://sportsdata.io/developers/api-documentation/mlb#/news/news-by-date'
 
-ENV["KEY"]
+team_response = RestClient.get(TEAM_URL)
+teams_array = JSON.parse(team_response)
+teams_array.map do |team|
+    Team.create(key: team["Key"], 
+        city: team["City"], 
+        name: team["Name"], 
+        league: team["League"], 
+        division: team["Division"], 
+        logo: team["WikipediaLogoUrl"])
+end
 
-response = RestClient.get(TEAM_URL)
-
-teams_array = JSON.parse(response)
-
-binding.pry
+roster_response = RestClient.get(ROSTER_URL)
+rosters_array = JSON.parse(roster_response)
+rosters_array.map do |player|
+    #team = Team.find_by(key: player["Team"])
+    if player["Status"] == "Active"
+    Roster.create(firstname: player["FirstName"],
+        lastname: player["LastName"],
+        position: player["Position"],
+        status: player["Status"],
+        team: player["Team"]
+    )
+    end
+end
