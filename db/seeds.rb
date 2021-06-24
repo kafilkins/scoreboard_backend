@@ -38,7 +38,8 @@ rosters_array.map do |player|
         lastname: player["LastName"],
         position: player["Position"],
         status: player["Status"],
-        team: player["Team"]
+        team: player["Team"],
+        player_id: player["PlayerID"]
     )
     end
 end
