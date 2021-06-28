@@ -14,7 +14,7 @@ ActiveRecord::Schema.define(version: 2021_06_21_203641) do
 
   create_table "news", force: :cascade do |t|
     t.string "title"
-    t.text "context"
+    t.text "content"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

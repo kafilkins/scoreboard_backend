@@ -7,16 +7,40 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 ENV["KEY"]
+current_date = Date.today.to_s(:custom)
 
 TEAM_URL = "https://fly.sportsdata.io/v3/mlb/scores/json/teams?key=#{ENV["KEY"]}"
 
 ROSTER_URL = "https://fly.sportsdata.io/v3/mlb/scores/json/Players?key=#{ENV["KEY"]}"
 
-STANDINGS_URL = 'https://sportsdata.io/developers/api-documentation/mlb#/base/standings'
+STANDINGS_URL = "https://fly.sportsdata.io/v3/mlb/scores/json/Standings/2021?key=#{ENV["KEY"]}"
 
-SCORES_URL = 'https://sportsdata.io/developers/api-documentation/mlb#/scores/games-by-date'
+SCORES_URL = "https://fly.sportsdata.io/v3/mlb/scores/json/GamesByDate/#{current_date}?key=#{ENV["KEY"]}"
 
-NEWS_URL = 'https://sportsdata.io/developers/api-documentation/mlb#/news/news-by-date'
+NEWS_URL = "https://fly.sportsdata.io/v3/mlb/scores/json/NewsByDate/#{current_date}?key=#{ENV["KEY"]}"
+
+scores_response = RestClient.get(SCORES_URL)
+scores_array = JSON.parse(scores_response)
+scores_array.map do |score|
+    Score.create(day: score["Day"],
+        awayteam: score["AwayTeam"],
+        hometeam: score["HomeTeam"],
+        awayteamruns: score["AwayTeamRuns"],
+        hometeamruns: score["HomeTeamRuns"]
+        )
+end
+
+standings_response = RestClient.get(STANDINGS_URL)
+standings_array = JSON.parse(standings_response)
+standings_array.map do |standing|
+    Standing.create(city: standing["City"],
+        name: standing["Name"],
+        league: standing["League"],
+        division: standing["Division"],
+        wins: standing["Wins"],
+        losses: standing["Losses"]
+        )
+end
 
 team_response = RestClient.get(TEAM_URL)
 teams_array = JSON.parse(team_response)
@@ -32,7 +56,6 @@ end
 roster_response = RestClient.get(ROSTER_URL)
 rosters_array = JSON.parse(roster_response)
 rosters_array.map do |player|
-    #team = Team.find_by(key: player["Team"])
     if player["Status"] == "Active"
     Roster.create(firstname: player["FirstName"],
         lastname: player["LastName"],
@@ -42,4 +65,12 @@ rosters_array.map do |player|
         player_id: player["PlayerID"]
     )
     end
+end
+
+news_response = RestClient.get(NEWS_URL)
+news_array = JSON.parse(news_response)
+news_array.map do |news|
+    News.create(title: news["Title"],
+        content: news["Content"]
+        )
 end
