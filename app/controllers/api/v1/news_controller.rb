@@ -5,12 +5,4 @@ class Api::V1::NewsController < ApplicationController
         render json: news 
     end
 
-    def create 
-
-    end
-
-    def show 
-
-    end
-
 end

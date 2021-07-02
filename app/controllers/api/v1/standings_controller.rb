@@ -5,12 +5,4 @@ class Api::V1::StandingsController < ApplicationController
         render json: standings
     end
 
-    def create 
-
-    end
-
-    def show 
-
-    end
-
 end

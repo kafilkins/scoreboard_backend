@@ -5,8 +5,4 @@ class Api::V1::TeamsController < ApplicationController
         render json: teams
     end
 
-    def show 
-
-    end
-
 end
