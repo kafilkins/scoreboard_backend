@@ -43,7 +43,6 @@ Classes
 
     RostersContainer
     - Create a framework w/ TeamName, maybe a small logo, where info will be determined by what team is clicked and what roster is presented. 
-    - 
 
     Scores 
     - Updated daily 

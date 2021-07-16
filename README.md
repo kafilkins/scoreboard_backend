@@ -1,24 +1,7 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Scoreboard is an application that allows the user to view various information about Major League Baseball. It has a rails-api backend with a react frontend. A user is able to view the latest news, for that given day within MLB. There is a teams page that will allow the user to select his favorite team and view the current roster. There is a score page that will show the scores for all games within MLB, for that specific day. There is also a standings page that a user can view the current MLB standings.  
 
-Things you may want to cover:
+Installation - Fork each repository ('scoreboard_frontend' and 'scoreboard_backend') - Clone each file to your computer - Change into the proper directory for each repo. Please note, you'll need to have multiple terminals open, in each proper directory, one for 'scoreboard_frontend' and 'scoreboard_backend'. For the 'scoreboard_backend' directory, you will need to run 'bundle install', run 'rails db:migrate', rails 'rails :dbseed', then run 'rails s' to get your server running. For the 'scoreboard_frontend', once you're in the proper directory, you can run 'npm start' and you should have access to view all the MLB information accordingly. 
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+'Link for 'scoreboard_frontend' - 'https://github.com/kafilkins/scoreboard_frontend'
