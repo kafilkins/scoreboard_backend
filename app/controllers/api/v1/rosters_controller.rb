@@ -6,14 +6,8 @@ class Api::V1::RostersController < ApplicationController
     end
 
     def show 
-        roster = Roster.create_roster(rosters_params)
+        roster = Roster.create_roster(params[:id])
         render json: roster
     end
-
-    private 
-
-    def rosters_params
-        params.require(:rosters).permit(:team)
-    end
-
+    
 end

@@ -32,3 +32,20 @@ Classes
         - "HomeTeam": string 
         - "AwayTeamRuns": integer 
         - "HomeTeamRuns": integer 
+
+
+    Home
+    - Change the url for the HomePage from "/news" to "/"
+    - News needs to be updated daily
+
+    Teams
+    - Looking good
+
+    RostersContainer
+    - Create a framework w/ TeamName, maybe a small logo, where info will be determined by what team is clicked and what roster is presented. 
+    - 
+
+    Scores 
+    - Updated daily 
+    - Adjust individual columns for better UX 
+

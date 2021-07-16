@@ -26,7 +26,9 @@ scores_array.map do |score|
         awayteam: score["AwayTeam"],
         hometeam: score["HomeTeam"],
         awayteamruns: score["AwayTeamRuns"],
-        hometeamruns: score["HomeTeamRuns"]
+        hometeamruns: score["HomeTeamRuns"],
+        status: score["Status"],
+        datetime: score["DateTime"]
         )
 end
 

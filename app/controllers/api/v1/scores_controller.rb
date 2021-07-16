@@ -5,4 +5,8 @@ class Api::V1::ScoresController < ApplicationController
         render json: scores 
     end
 
+    def show    
+        
+    end
+
 end
